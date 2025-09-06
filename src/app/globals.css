@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@tailwind utilities;
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -115,6 +117,9 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background: radial-gradient(circle at 20% 30%, #fff7cc, transparent 40%),
+                radial-gradient(circle at 80% 30%, #e0e7ff, transparent 40%),
+                radial-gradient(circle at 50% 90%, #ffe4e6, transparent 40%);
+    @apply text-foreground;
   }
 }
