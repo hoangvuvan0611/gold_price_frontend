@@ -120,6 +120,7 @@
     /*background: radial-gradient(circle at 20% 30%, #e0e7ff, transparent 40%),*/
     /*            radial-gradient(circle at 80% 30%, #fff7cc, transparent 30%),*/
     /*            radial-gradient(circle at 50% 90%, #ffe4e6, transparent 40%);*/
+    @apply font-sans;
     @apply text-foreground;
   }
 }
