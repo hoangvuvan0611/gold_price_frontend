@@ -5,15 +5,22 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row justify-between py-8 md:py-10 gap-6 md:gap-0">
                     <div>
                         <h4 className="font-bold mb-2">Giá vàng</h4>
-                        <p>Kiến Hưng, Hải Phòng</p>
-                        <p>(+84) 099-888-999</p>
-                        <p>hoangvuvan677@gmail.com</p>
+                        <div className={'text-sm'}>
+                            <p>Kiến Hưng, Hải Phòng</p>
+                            <p>(+84) 099-888-999</p>
+                            <p>hoangvuvan677@gmail.com</p>
+                        </div>
+
                     </div>
                     <div>
                         <h4 className="font-bold mb-2">Liên kết</h4>
-                        <ul className="space-y-2">
-                            <li>Chính sách bảo mật</li>
-                            <li>Chính sách và điều khoản sử dụng</li>
+                        <ul className="space-y-2 text-sm underline">
+                            <li>
+                                <p>Chính sách bảo mật</p>
+                            </li>
+                            <li>
+                                <p>Chính sách và điều khoản sử dụng</p>
+                            </li>
                         </ul>
                     </div>
                 </div>
