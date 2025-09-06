@@ -34,12 +34,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div>
-            <Header/>
-        </div>
-        {children}
-        <div>
-            <Footer/>
+        <div className={'mx-auto max-w-[1280px] px-2 sm:px-4'}>
+            <div className={'sticky top-0 z-50'}>
+                <Header/>
+            </div>
+            {children}
+            <div>
+                <Footer/>
+            </div>
         </div>
       </body>
     </html>

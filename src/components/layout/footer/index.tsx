@@ -7,7 +7,7 @@ export default function Footer() {
                         <h4 className="font-bold mb-2">Giá vàng</h4>
                         <div className={'text-sm'}>
                             <p>Kiến Hưng, Hải Phòng</p>
-                            <p>(+84) 099-888-999</p>
+                            <p>(+84) 039-812-8898</p>
                             <p>hoangvuvan677@gmail.com</p>
                         </div>
 

@@ -1,7 +1,7 @@
-export default function GoldWorld() {
+export default function GoldDomestic() {
     return (
         <div className={'min-h-screen'}>
-            Gold world!!!
+            Gold Domestic!!!!
         </div>
     );
 }
