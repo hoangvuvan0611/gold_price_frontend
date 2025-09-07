@@ -74,7 +74,13 @@ export default function GoldDomestic() {
           </div>
         </div>
 
-        <SjcChart/>
+        <div className="mt-36">
+          <div className={'text-2xl font-bold mb-12'}>
+            *Biểu đồ giá vàng SJC
+          </div>
+          <SjcChart/>
+        </div>
+
         <div className={'h-80'}></div>
       </div>
     );
