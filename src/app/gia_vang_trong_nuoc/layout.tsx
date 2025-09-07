@@ -26,36 +26,35 @@ export default function GiaVangTrongNuocLayout({ children }: { children: ReactNo
   const pathname = usePathname();
 
     return (
-        <div className="min-h-screen mt-16 w-full max-w-5xl mx-auto">
-
-            {/* Danh sach cac tab thuong hieu vang trong nuoc */}
-            <div className="w-full max-w-5xl mx-auto mb-24">
-                {/* Danh sách tab */}
-                <div className="flex gap-4 border-b border-gray-200 pb-2">
-                    {tabs.map((tab) => (
-                        <Link
-                            key={tab.id}
-                            href={tab.href}
-                            className={`flex flex-col items-center px-4 py-2 rounded-lg transition
-                            ${pathname === tab.href || (pathname === '/' && tab.href === '/') ? "bg-gray-100 border-b-4 border-yellow-500" : "hover:bg-gray-50"}`}
-                        >
-                            <Image
-                                src={tab.image}
-                                alt={tab.title}
-                                width={40}
-                                height={40}
-                                className={'w-10 h-10 object-contain rounded-sm'}
-                            />
-                            <span className="text-sm font-bold mt-1">
+      <div className="">
+        {/* Danh sach cac tab thuong hieu vang trong nuoc */}
+        <div className="w-full max-w-5xl mx-auto mb-24 mt-12">
+          {/* Danh sách tab */}
+          <div className="flex gap-4 border-b border-gray-200 pb-2">
+            {tabs.map((tab) => (
+              <Link
+                key={tab.id}
+                href={tab.href}
+                className={`flex flex-col items-center px-4 py-2 rounded-lg transition
+                ${pathname === tab.href || (pathname === '/' && tab.href === '/') ? "bg-gray-100 border-b-4 border-yellow-500" : "hover:bg-gray-50"}`}
+              >
+                <Image
+                    src={tab.image}
+                    alt={tab.title}
+                    width={40}
+                    height={40}
+                    className={'w-10 h-10 object-contain rounded-sm'}
+                />
+                <span className="text-sm font-bold mt-1">
                   {tab.title}
                 </span>
-                        </Link>
-                    ))}
-                </div>
-            </div>
-
-            {/* Nội dung page con */}
-            <div className="mt-4">{children}</div>
+              </Link>
+          ))}
+          </div>
         </div>
+
+        {/* Nội dung page con */}
+        <div className="mt-4">{children}</div>
+    </div>
     );
 }

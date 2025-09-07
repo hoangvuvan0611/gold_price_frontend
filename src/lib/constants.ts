@@ -15,3 +15,6 @@ export const DESCRIPTION = "Chợ nông sản sạch & thuần hữu cơ";
 //
 export const MESSAGE_ADD_TO_CART_SUCCESS = "Đã thêm sản phẩm vào giỏ hàng, vui lòng kiểm tra giỏ hàng của bạn để thanh toán!";
 export const MESSAGE_ADD_TO_CART_ERROR = "Thêm sản phẩm vào giỏ hàng thất bại!";
+
+// Response Status
+export const RESPONSE_STATUS_401 = 401;

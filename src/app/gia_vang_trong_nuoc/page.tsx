@@ -1,5 +1,6 @@
 'use client'
 import Image from "next/image";
+import SjcChart from "@/components/partner/webgia/sjcChar";
 
 export default function GoldDomestic() {
     return (
@@ -73,9 +74,9 @@ export default function GoldDomestic() {
           </div>
         </div>
 
-        <div className={'h-80'}>
 
-        </div>
+        <SjcChart/>
+        <div className={'h-80'}></div>
       </div>
     );
 }
