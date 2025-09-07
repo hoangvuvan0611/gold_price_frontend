@@ -1,15 +1,16 @@
 // components/SjcChart.tsx
 "use client";
 
-import Highcharts from "highcharts/highstock";
+import Highcharts, {SeriesOptionsType, YAxisOptions} from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {ApiResponseData, sjcApi} from "@/services/sjcApi";
-import {ChartOptions, GoldSeries, SjcChartData} from "@/models/sjcChartData";
+import {ChartOptions, SjcChartData} from "@/models/sjcChartData";
 
 Highcharts.setOptions({
   lang: {
     loading: "Đang tải...",
+    rangeSelectorZoom: "Khoảng: ",
     months: [
       "Tháng 1",
       "Tháng 2",
@@ -51,8 +52,12 @@ Highcharts.setOptions({
 });
 
 export default function SjcChart() {
-  const [options, setOptions] = useState<ChartOptions | null>(null);
-
+  const [options, setOptions] = useState<Highcharts.Options>({
+    chart: {
+      height: 600,
+      spacingRight: 60,
+    }
+  });
 
   useEffect(() => {
     sjcApi.getSJCChartData().then((response: ApiResponseData<SjcChartData>) => {
@@ -60,11 +65,64 @@ export default function SjcChart() {
         const series = response.data.seriesOptions;
         const optionsValue = response.data.chartOptions;
         optionsValue.yAxis.labels.formatter =  eval("(" + "function () {\n" +
-          "          return this.value + \"\";\n" +
+          "          return this.value + ' triệu';\n" +
           "        }" + ")");
+
+        // So luong gia tri hien thi o truc y
+        optionsValue.yAxis.tickAmount = 5;
+        optionsValue.yAxis.tickInterval = 5;
+        optionsValue.yAxis.opposite = true;
+        optionsValue.yAxis.reserveSpace = true;
+        optionsValue.yAxis.labels.align = 'right';
+        optionsValue.yAxis.labels.x = 60;
+        optionsValue.series = series;
+
+        // optionsValue.chart.marginRight = 30;
+
         setOptions({
-          ...optionsValue,
-          series: series
+          ...options,
+          rangeSelector: {
+            ...optionsValue.rangeSelector,
+            buttonSpacing: 20,
+            buttonTheme: {
+              width: 70,
+              r: 4,
+            },
+            buttons: [
+              {
+                type: 'month',
+                count: 1,
+                text: '1 tháng', // tiếng Việt
+              },
+              {
+                type: 'month',
+                count: 3,
+                text: '3 tháng',
+              },
+              {
+                type: 'month',
+                count: 6,
+                text: '6 tháng',
+              },
+              {
+                type: 'year',
+                count: 12,
+                text: '1 năm',
+              },
+              {
+                type: 'all',
+                text: 'Tất cả',
+              },
+            ],
+          },
+          xAxis: optionsValue.xAxis,
+          yAxis: optionsValue.yAxis as YAxisOptions,
+          plotOptions: optionsValue.plotOptions,
+          title: optionsValue.title,
+          subtitle: optionsValue.subtitle,
+          tooltip: optionsValue.tooltip,
+          colors: optionsValue.colors,
+          series: series as SeriesOptionsType[],
         });
       }
     });

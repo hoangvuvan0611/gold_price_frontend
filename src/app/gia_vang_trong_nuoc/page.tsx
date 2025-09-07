@@ -74,7 +74,6 @@ export default function GoldDomestic() {
           </div>
         </div>
 
-
         <SjcChart/>
         <div className={'h-80'}></div>
       </div>

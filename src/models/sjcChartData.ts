@@ -19,6 +19,11 @@ export interface GoldSeries {
 }
 
 export interface ChartOptions {
+  chart: {
+    height: number | string;
+    spacingRight: number;
+    marginRight: number;
+  };
   rangeSelector: {
     selected: number;
   };
@@ -28,7 +33,16 @@ export interface ChartOptions {
   yAxis: {
     labels: {
       formatter: () => string;
+      align: string;
+      x: number;
+      y: number;
     };
+    reserveSpace: boolean;
+    tickAmount: number;
+    tickInterval: number;
+    min: number;
+    max: number;
+    opposite: boolean;
     plotLines: Array<{
       value: number;
       width: number;
