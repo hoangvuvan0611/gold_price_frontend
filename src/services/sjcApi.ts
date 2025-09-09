@@ -1,5 +1,6 @@
 import apiClient from "./appClient";
 import {SjcChartData} from "@/models/sjcChartData";
+import {GoldCommonPrice} from "@/models/goldCommonPrice";
 
 export interface ApiResponseDataList<T> {
   dataList: T[];
@@ -18,4 +19,5 @@ export interface ApiResponseData<T> {
 
 export const sjcApi = {
   getSJCChartData: (): Promise<ApiResponseData<SjcChartData>> => apiClient.get(`/gold_price/sjcChartData`),
+  getCommonData: (): Promise<ApiResponseData<GoldCommonPrice>> => apiClient.get(`/gold_price/getInfoGoldSJCPrice`),
 }
