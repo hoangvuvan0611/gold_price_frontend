@@ -39,9 +39,9 @@ export default function Header() {
 
                 <div className={'flex items-center gap-4'}>
                     {/* Search chỉ hiện trên desktop */}
-                    <div className="hidden md:flex flex-1 justify-center px-4">
-                        <SearchBar />
-                    </div>
+                    {/*<div className="hidden md:flex flex-1 justify-center px-4">*/}
+                    {/*    <SearchBar />*/}
+                    {/*</div>*/}
 
                     {/* Navbar desktop */}
                     <div
@@ -51,7 +51,7 @@ export default function Header() {
                     </div>
                 </div>
 
-                {/* Bên phải: ngôn ngữ + user + button */}
+                 {/*Bên phải: ngôn ngữ + user + button*/}
                 <div className="flex items-center gap-4 sm:gap-4">
                     <button className="flex items-center gap-1 text-sm">
                         🌐 <span className="hidden sm:inline">VI</span>

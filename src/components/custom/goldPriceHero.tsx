@@ -1,41 +1,20 @@
-'use client';
 import Image from "next/image";
-import SjcChart from "@/components/partner/webgia/sjcChar";
-import GoldRegionPriceTable from "@/components/layout/table/goldRegionPriceTable";
-import {GoldCommonPrice, GoldPrice, GoldRegionPrice} from "@/models/goldCommonPrice";
-import {useEffect, useState} from "react";
-import {sjcApi} from "@/services/sjcApi";
-import {toast} from "sonner";
-import {ApiResponseData} from "@/models/response";
+import {GoldPrice} from "@/models/goldCommonPrice";
 
-export default function GoldDomestic() {
+interface Props {
+  title: string;
+  timeUpdateStr: string;
+  goldPrices: GoldPrice[];
+  urlGoldBar: string;
+  urlGoldRing: string;
+}
 
-  const [goldPrices, setGoldPrices] = useState<GoldPrice[]>([]);
-  const [regionPrice, setRegionPrice] = useState<GoldRegionPrice>({goldRegionMap: {}});
-  const [timeUpdateStr, setTimeUpdateStr] = useState<string>("");
-
-  useEffect(() => {
-    sjcApi.getCommonData().then((response: ApiResponseData<GoldCommonPrice>) => {
-      debugger
-      if (response.success) {
-        const data = response.data;
-        console.log(data);
-        setGoldPrices(data.goldPrices);
-        setTimeUpdateStr(data.timeUpdateStr);
-        setRegionPrice(data.goldRegionPrice);
-      } else {
-        toast("Lỗi tải dữ liệu")
-      }
-    });
-  }, []);
-
+export default function GoldPriceHero({ title, timeUpdateStr, goldPrices, urlGoldRing, urlGoldBar }: Props ) {
   return (
-    <div className="min-h-screen mt-16">
-
-      {/* Common price gold SJC*/}
+    <div>
       <div className={'flex items-center align-center'}>
         <div className={'text-2xl font-bold mr-4'}>
-          *Giá vàng SJC
+          *Giá vàng {title}
         </div>
         <div className={'font-normal text-sm text-lime-600 p-2 bg-gray-200 rounded-lg'}>
           {timeUpdateStr}
@@ -47,7 +26,7 @@ export default function GoldDomestic() {
           return item.title === "Giá vàng Miếng"
             ? <div key={item.title} className="flex gap-6 p-4 ">
               <Image
-                src="/gold_fine_sjc.png"
+                src={urlGoldBar}
                 alt="test"
                 width={100}
                 height={100}
@@ -68,10 +47,10 @@ export default function GoldDomestic() {
                     </p>
                   </div>
                   <div className="flex items-center space-x-2 cursor-pointer">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                </span>
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
                     <p>Bán ra:
                       <span className={'font-bold'}> {item.buyPrice + ".000"}</span>
                       <span className={'text-sm'}> VNĐ/Lượng</span>
@@ -82,7 +61,7 @@ export default function GoldDomestic() {
             </div>
             : <div key={item.title} className="flex gap-6 p-4 ">
               <Image
-                src="/gold_ring_sjc.png"
+                src={urlGoldRing}
                 alt="test"
                 width={100}
                 height={100}
@@ -117,23 +96,6 @@ export default function GoldDomestic() {
             </div>;
         })}
       </div>
-
-      <div className="mt-36">
-        <div className={'text-2xl font-bold mb-12'}>
-          *Biểu đồ giá vàng SJC
-        </div>
-        <SjcChart/>
-      </div>
-
-      <div className={'mt-36'}>
-        <GoldRegionPriceTable
-          titleTable={"SJC"}
-          goldRegionPrice={regionPrice}
-          timeUpdateStr={timeUpdateStr}
-        />
-      </div>
-
-      <div className={'h-40'}></div>
     </div>
   );
 }
