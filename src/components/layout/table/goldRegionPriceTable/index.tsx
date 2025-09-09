@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {GoldRegionDetailPrice, GoldRegionPrice} from "@/models/goldCommonPrice";
 
 const goldPrices = [
   { region: "Hà Nội", type: "SJC Lẻ", buy: "133.100", sell: "135.100" },
@@ -15,14 +16,44 @@ const goldPrices = [
   { region: "", type: "Nữ trang 99.99", buy: "126.200", sell: "129.200" },
 ];
 
-export default function GoldRegionPriceTable() {
+interface Props {
+  titleTable: string;
+  goldRegionPrice: GoldRegionPrice,
+  timeUpdateStr: string;
+}
+
+export default function GoldRegionPriceTable({ titleTable, goldRegionPrice, timeUpdateStr }: Props) {
+
+  const [regionPriceList, setRegionPriceList] = useState<GoldRegionDetailPrice[]>([]);
+
+  useEffect(() => {
+    const regionList: GoldRegionDetailPrice[] = [];
+
+    Object.entries(goldRegionPrice.goldRegionMap).forEach(([region, prices]) => {
+      prices.forEach((p, idx) => {
+        regionList.push({
+          region: idx === 0 ? region : "", // chỉ hiện tên khu vực ở dòng đầu
+          title: p.title,
+          buy: p.buy,
+          sell: p.sell,
+        });
+      });
+    });
+
+    setRegionPriceList(regionList);
+  }, [goldRegionPrice]);
+
   return (
     <div className="flex flex-col items-center justify-center p-6 ">
       <div className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
         {/* Header */}
         <div className="px-6 py-5 bg-gray-50 border-b border-gray-200">
-          <h1 className="text-2xl font-semibold text-gray-800">BẢNG GIÁ VÀNG</h1>
-          <p className="text-sm text-gray-500 mt-1">Cập nhật lúc 10:30 AM - 09/09/2025</p>
+          <h1 className="text-2xl font-semibold text-gray-800">
+            BẢNG GIÁ VÀNG
+             <span className={'text-lime-600 font-bold'}> {titleTable} </span>
+            TẠI CÁC KHU VỰC TRÊN CẢ NƯỚC
+          </h1>
+          <p className="text-sm text-gray-500 mt-1">{timeUpdateStr}</p>
         </div>
 
         {/* Table */}
@@ -37,7 +68,7 @@ export default function GoldRegionPriceTable() {
             </tr>
             </thead>
             <tbody>
-            {goldPrices.map((item, i) => (
+            {regionPriceList?.map((item, i) => (
               <tr
                 key={i}
                 className={`hover:bg-gray-50 transition-colors ${
@@ -49,10 +80,10 @@ export default function GoldRegionPriceTable() {
                 </td>
                 <td className="px-6 py-4 flex items-center">
                   {/*<span className="text-blue-500 mr-2">{item.icon}</span>*/}
-                  {item.type}
+                  {item.title}
                 </td>
-                <td className="px-6 py-4 text-red-500 font-medium text-right">{item.buy}</td>
-                <td className="px-6 py-4 text-green-600 font-medium text-right">{item.sell}</td>
+                <td className="px-6 py-4 text-red-500 font-medium text-right">{item.buy + '.000'}</td>
+                <td className="px-6 py-4 text-green-600 font-medium text-right">{item.sell + '.000'}</td>
               </tr>
             ))}
             </tbody>
@@ -61,7 +92,7 @@ export default function GoldRegionPriceTable() {
 
         {/* Footer */}
         <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 text-center text-sm text-gray-500">
-          Đơn vị: x1000đ/lượng | Giá chỉ mang tính tham khảo
+          Đơn vị: Việt Nam đồng / lượng | Giá chỉ mang tính tham khảo
         </div>
       </div>
     </div>

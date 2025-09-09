@@ -1,6 +1,7 @@
 export interface GoldCommonPrice {
   goldPrices: GoldPrice[];
   goldRegionPrice: GoldRegionPrice;
+  timeUpdateStr: string;
 }
 
 export interface GoldPrice {
@@ -16,6 +17,7 @@ export interface GoldRegionPrice {
 
 
 export interface GoldRegionDetailPrice {
+  region: string;
   title: string;
   buy: string;
   sell: string;
