@@ -29,7 +29,7 @@ export default function GoldDomestic() {
   }, []);
 
   return (
-    <div className="min-h-screen mt-16 px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8">
 
       {/* Common price gold SJC*/}
       <div className={'flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-6'}>
