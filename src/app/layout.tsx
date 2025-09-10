@@ -36,7 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <Toaster position="top-right"/>
-      <div className={'mx-auto max-w-[1280px] px-2 sm:px-4'}>
+      <div className={'mx-auto max-w-[1280px] px-2 sm:px-4 pb-20 md:pb-0'}>
           <div className={'sticky top-0 z-50'}>
               <Header/>
           </div>

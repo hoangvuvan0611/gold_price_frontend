@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Responsive - Gold Price</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .breakpoint {
+            background: #e3f2fd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+        }
+        .breakpoint h3 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+        .breakpoint p {
+            margin: 5px 0;
+            color: #424242;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .test-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .test-card h4 {
+            margin: 0 0 10px 0;
+            color: #495057;
+        }
+        .responsive-demo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        @media (max-width: 640px) {
+            .responsive-demo {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .responsive-demo {
+                padding: 25px;
+                font-size: 16px;
+            }
+        }
+        @media (min-width: 1025px) {
+            .responsive-demo {
+                padding: 30px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Responsive Design - Gold Price Website</h1>
+        
+        <div class="breakpoint">
+            <h3>📱 Mobile (320px - 640px)</h3>
+            <p>• Header với menu hamburger</p>
+            <p>• Layout 1 cột cho giá vàng</p>
+            <p>• Text size nhỏ hơn</p>
+            <p>• Padding và margin giảm</p>
+        </div>
+        
+        <div class="breakpoint">
+            <h3>📱 Tablet (641px - 1024px)</h3>
+            <p>• Layout 2 cột cho giá vàng</p>
+            <p>• Text size trung bình</p>
+            <p>• Spacing tăng lên</p>
+        </div>
+        
+        <div class="breakpoint">
+            <h3>💻 Desktop (1025px+)</h3>
+            <p>• Layout đầy đủ với sidebar</p>
+            <p>• Text size lớn nhất</p>
+            <p>• Spacing tối đa</p>
+        </div>
+        
+        <div class="responsive-demo">
+            <h2>Responsive Demo</h2>
+            <p>Thay đổi kích thước cửa sổ để xem responsive design hoạt động!</p>
+        </div>
+        
+        <div class="test-grid">
+            <div class="test-card">
+                <h4>✅ Header Responsive</h4>
+                <p>Menu hamburger trên mobile, full menu trên desktop</p>
+            </div>
+            <div class="test-card">
+                <h4>✅ Gold Price Cards</h4>
+                <p>1 cột trên mobile, 2 cột trên tablet+</p>
+            </div>
+            <div class="test-card">
+                <h4>✅ TradingView Charts</h4>
+                <p>Chiều cao responsive theo breakpoint</p>
+            </div>
+            <div class="test-card">
+                <h4>✅ Price Tables</h4>
+                <p>Horizontal scroll trên mobile</p>
+            </div>
+            <div class="test-card">
+                <h4>✅ Typography</h4>
+                <p>Text size responsive</p>
+            </div>
+            <div class="test-card">
+                <h4>✅ Spacing</h4>
+                <p>Padding/margin responsive</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #e8f5e8; border-radius: 8px; border-left: 4px solid #4caf50;">
+            <h3 style="margin: 0 0 10px 0; color: #2e7d32;">🎉 Responsive Implementation Complete!</h3>
+            <p style="margin: 5px 0; color: #424242;">Tất cả các trang đã được cập nhật để responsive:</p>
+            <ul style="margin: 10px 0; color: #424242;">
+                <li>Trang chủ (/)</li>
+                <li>Giá vàng trong nước (/gia_vang_trong_nuoc)</li>
+                <li>Giá vàng thế giới (/gia_vang_the_gioi)</li>
+                <li>Tất cả các trang con của giá vàng trong nước</li>
+                <li>Header, Footer, và tất cả components</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

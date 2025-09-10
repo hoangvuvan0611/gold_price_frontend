@@ -39,11 +39,11 @@ export default function MHPage() {
         urlGoldRing={'/gold_ring.png'}
       />
 
-      <div className={'mt-36'}>
+      <div className={'mt-12 sm:mt-16 lg:mt-36'}>
         <GoldRegionPriceTable titleTable={'MI HỒNG'} goldRegionPrice={regionPrice} timeUpdateStr={timeUpdateStr}/>
       </div>
 
-      <div className={'h-40'}></div>
+      <div className={'h-20 sm:h-40'}></div>
     </div>
   );
 }

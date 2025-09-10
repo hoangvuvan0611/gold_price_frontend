@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Mobile Bottom Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 80px; /* Space for bottom nav */
+        }
+        .header {
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo img {
+            width: 42px;
+            height: 42px;
+        }
+        .logo h1 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b, #3b82f6);
+            color: white;
+        }
+        .content {
+            padding: 20px;
+        }
+        .demo-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .demo-section h3 {
+            margin: 0 0 10px 0;
+            color: #1e40af;
+        }
+        .demo-section p {
+            margin: 5px 0;
+            color: #374151;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e5e5e5;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 50;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+            min-width: 60px;
+        }
+        .nav-item.active {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .nav-item:not(.active) {
+            color: #6b7280;
+        }
+        .nav-item:hover {
+            background: #f3f4f6;
+        }
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 4px;
+        }
+        .nav-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .mobile-only {
+            display: block;
+        }
+        .desktop-only {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .mobile-only {
+                display: none;
+            }
+            .desktop-only {
+                display: block;
+            }
+            .container {
+                padding-bottom: 0;
+            }
+        }
+        .test-info {
+            background: #e8f5e8;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+        }
+        .test-info h4 {
+            margin: 0 0 8px 0;
+            color: #2e7d32;
+        }
+        .test-info ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+        .test-info li {
+            margin: 4px 0;
+            color: #424242;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <img src="/gold_logo.png" alt="Gold Logo" onerror="this.style.display='none'">
+                <h1>Giá Vàng</h1>
+            </div>
+            <div class="header-actions">
+                <button class="btn">🌐 VI</button>
+                <button class="btn">👤</button>
+                <button class="btn btn-primary">Bắt đầu</button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <h2>Test Mobile Bottom Navigation</h2>
+            
+            <div class="test-info">
+                <h4>📱 Mobile Bottom Navigation Features:</h4>
+                <ul>
+                    <li>Fixed position at bottom of screen</li>
+                    <li>Only visible on mobile devices (< 768px)</li>
+                    <li>3 main navigation items with icons</li>
+                    <li>Active state highlighting</li>
+                    <li>Smooth transitions and hover effects</li>
+                    <li>Touch-friendly design</li>
+                </ul>
+            </div>
+
+            <div class="demo-section">
+                <h3>🏠 Trang chủ</h3>
+                <p>Hiển thị giá vàng SJC chính và biểu đồ xu hướng</p>
+            </div>
+
+            <div class="demo-section">
+                <h3>🌍 Giá vàng trong nước</h3>
+                <p>Bảng giá vàng từ các thương hiệu Việt Nam</p>
+            </div>
+
+            <div class="demo-section">
+                <h3>📈 Giá vàng thế giới</h3>
+                <p>Giá vàng quốc tế và biểu đồ phân tích</p>
+            </div>
+
+            <div class="demo-section">
+                <h3>💡 Responsive Design</h3>
+                <p>• Mobile: Bottom navigation bar</p>
+                <p>• Desktop: Top navigation bar</p>
+                <p>• Tablet: Top navigation bar</p>
+            </div>
+
+            <div class="demo-section">
+                <h3>🎨 Styling Features</h3>
+                <p>• Amber color scheme for active states</p>
+                <p>• Smooth transitions</p>
+                <p>• Touch-friendly sizing</p>
+                <p>• Clean, modern design</p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation (Mobile Only) -->
+        <div class="bottom-nav mobile-only">
+            <a href="/" class="nav-item active">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                <span class="nav-text">Trang chủ</span>
+            </a>
+            <a href="/gia_vang_trong_nuoc" class="nav-item">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="nav-text">Trong nước</span>
+            </a>
+            <a href="/gia_vang_the_gioi" class="nav-item">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+                <span class="nav-text">Thế giới</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Simulate active state changes
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all items
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Show feedback
+                const text = this.querySelector('.nav-text').textContent;
+                alert(`Đã chọn: ${text}`);
+            });
+        });
+    </script>
+</body>
+</html>

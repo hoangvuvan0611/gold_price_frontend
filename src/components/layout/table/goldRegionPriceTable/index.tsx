@@ -44,27 +44,27 @@ export default function GoldRegionPriceTable({ titleTable, goldRegionPrice, time
   }, [goldRegionPrice]);
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 ">
+    <div className="flex flex-col items-center justify-center p-4 sm:p-6">
       <div className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
         {/* Header */}
-        <div className="px-6 py-5 bg-gray-50 border-b border-gray-200">
-          <h1 className="text-2xl font-semibold text-gray-800">
+        <div className="px-4 sm:px-6 py-4 sm:py-5 bg-gray-50 border-b border-gray-200">
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 text-center sm:text-left">
             BẢNG GIÁ VÀNG
              <span className={'text-lime-600 font-bold'}> {titleTable} </span>
             TẠI CÁC KHU VỰC TRÊN CẢ NƯỚC
           </h1>
-          <p className="text-sm text-gray-500 mt-1">{timeUpdateStr}</p>
+          <p className="text-xs sm:text-sm text-gray-500 mt-1 text-center sm:text-left">{timeUpdateStr}</p>
         </div>
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full text-gray-700">
+          <table className="w-full text-gray-700 min-w-[600px]">
             <thead>
             <tr className="bg-gray-100 text-left">
-              <th className="px-6 py-4 font-medium text-gray-600">Khu vực</th>
-              <th className="px-6 py-4 font-medium text-gray-600">Loại vàng</th>
-              <th className="px-6 py-4 font-medium text-gray-600 text-right">Mua vào</th>
-              <th className="px-6 py-4 font-medium text-gray-600 text-right">Bán ra</th>
+              <th className="px-3 sm:px-6 py-3 sm:py-4 font-medium text-gray-600 text-xs sm:text-sm">Khu vực</th>
+              <th className="px-3 sm:px-6 py-3 sm:py-4 font-medium text-gray-600 text-xs sm:text-sm">Loại vàng</th>
+              <th className="px-3 sm:px-6 py-3 sm:py-4 font-medium text-gray-600 text-right text-xs sm:text-sm">Mua vào</th>
+              <th className="px-3 sm:px-6 py-3 sm:py-4 font-medium text-gray-600 text-right text-xs sm:text-sm">Bán ra</th>
             </tr>
             </thead>
             <tbody>
@@ -75,15 +75,14 @@ export default function GoldRegionPriceTable({ titleTable, goldRegionPrice, time
                   i !== goldPrices.length - 1 ? "border-b border-gray-100" : ""
                 }`}
               >
-                <td className={`px-6 py-4 font-medium ${item.region ? "text-blue-600" : "text-gray-500"}`}>
+                <td className={`px-3 sm:px-6 py-3 sm:py-4 font-medium text-xs sm:text-sm ${item.region ? "text-blue-600" : "text-gray-500"}`}>
                   {item.region}
                 </td>
-                <td className="px-6 py-4 flex items-center">
-                  {/*<span className="text-blue-500 mr-2">{item.icon}</span>*/}
+                <td className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm">
                   {item.title}
                 </td>
-                <td className="px-6 py-4 text-red-500 font-medium text-right">{item.buy + '.000'}</td>
-                <td className="px-6 py-4 text-green-600 font-medium text-right">{item.sell + '.000'}</td>
+                <td className="px-3 sm:px-6 py-3 sm:py-4 text-red-500 font-medium text-right text-xs sm:text-sm">{item.buy + '.000'}</td>
+                <td className="px-3 sm:px-6 py-3 sm:py-4 text-green-600 font-medium text-right text-xs sm:text-sm">{item.sell + '.000'}</td>
               </tr>
             ))}
             </tbody>
@@ -91,7 +90,7 @@ export default function GoldRegionPriceTable({ titleTable, goldRegionPrice, time
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 text-center text-sm text-gray-500">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gray-50 border-t border-gray-200 text-center text-xs sm:text-sm text-gray-500">
           Đơn vị: Việt Nam đồng / lượng | Giá chỉ mang tính tham khảo
         </div>
       </div>

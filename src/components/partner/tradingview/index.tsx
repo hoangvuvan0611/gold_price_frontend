@@ -76,17 +76,17 @@ function TradingViewWidget({symbol}: TradingViewWidgetProps) {
 
   return (
     <div
-      className="tradingview-widget-container w-full h-[1000px]" // 👈 set chiều cao
+      className="tradingview-widget-container w-full h-[400px] sm:h-[600px] lg:h-[800px] xl:h-[1000px]" // 👈 responsive height
       ref={container}
     >
       <div className="tradingview-widget-container__widget" />
-      <div className="tradingview-widget-copyright">
+      <div className="tradingview-widget-copyright text-center mt-2">
         <a
           href="https://vn.tradingview.com/"
           rel="noopener noreferrer"
           target="_blank"
         >
-          <span className="text-blue-500">Track all markets on TradingView</span>
+          <span className="text-blue-500 text-xs sm:text-sm">Track all markets on TradingView</span>
         </a>
       </div>
     </div>
