@@ -24,7 +24,7 @@ export default function GoldPriceHero({ title, timeUpdateStr, goldPrices, urlGol
       <div className={'grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-10'}>
         {goldPrices?.map((item) => {
           return item.title === "Giá vàng Miếng"
-            ? <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl shadow-lg">
+            ? <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl">
               <Image
                 src={urlGoldBar}
                 alt="test"
@@ -59,7 +59,7 @@ export default function GoldPriceHero({ title, timeUpdateStr, goldPrices, urlGol
                 </div>
               </div>
             </div>
-            : <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl shadow-lg">
+            : <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl">
               <Image
                 src={urlGoldRing}
                 alt="test"

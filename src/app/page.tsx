@@ -40,7 +40,7 @@ export default function Home() {
       <div className={'grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-10'}>
         {goldPrices?.map((item) => {
           return item.title === "Giá vàng Miếng"
-            ? <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl shadow-lg">
+            ? <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl">
               <Image
                 src="/gold_fine_sjc.png"
                 alt="test"
@@ -75,7 +75,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            : <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl shadow-lg">
+            : <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl">
               <Image
                 src="/gold_ring_sjc.png"
                 alt="test"
@@ -118,7 +118,7 @@ export default function Home() {
         <div className={'text-xl sm:text-2xl font-bold mb-4'}>
           *Biểu đồ xu hướng giá vàng thế giới
         </div>
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+        <div className="bg-white rounded-2xl p-4 sm:p-6">
           <TradingViewWidget symbol={"OANDA:XAUUSD|1D"}/>
         </div>
       </div>
@@ -129,7 +129,7 @@ export default function Home() {
         <div className={'text-xl sm:text-2xl font-bold mb-4'}>
           *Biểu đồ FOREX xu hướng tỷ giá VNĐ/USD
         </div>
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+        <div className="bg-white rounded-2xl p-4 sm:p-6">
           <TradingViewWidget symbol={"FX_IDC:USDVND|1D"}/>
         </div>
       </div>

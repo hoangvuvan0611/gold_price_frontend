@@ -44,7 +44,7 @@ export default function GoldDomestic() {
       <div className={'grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-10'}>
         {goldPrices?.map((item) => {
           return item.title === "Giá vàng Miếng"
-            ? <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl shadow-lg">
+            ? <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl">
               <Image
                 src="/gold_fine_sjc.png"
                 alt="test"
@@ -79,7 +79,7 @@ export default function GoldDomestic() {
                 </div>
               </div>
             </div>
-            : <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl shadow-lg">
+            : <div key={item.title} className="flex flex-col sm:flex-row gap-4 p-4 bg-white rounded-2xl">
               <Image
                 src="/gold_ring_sjc.png"
                 alt="test"
@@ -121,7 +121,7 @@ export default function GoldDomestic() {
         <div className={'text-xl sm:text-2xl font-bold mb-6 sm:mb-12'}>
           *Biểu đồ giá vàng SJC
         </div>
-        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+        <div className="bg-white rounded-2xl p-4 sm:p-6">
           <SjcChart/>
         </div>
       </div>
