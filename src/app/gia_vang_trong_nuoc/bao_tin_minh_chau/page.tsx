@@ -15,7 +15,6 @@ export default function BTMCPage() {
 
   useEffect(() => {
     btmcApi.getCommonData().then((response: ApiResponseData<GoldCommonPrice>) => {
-      debugger
       if (response.success) {
         const data = response.data;
         console.log(data);
