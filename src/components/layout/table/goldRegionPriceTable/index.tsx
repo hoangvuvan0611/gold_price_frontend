@@ -44,7 +44,7 @@ export default function GoldRegionPriceTable({ titleTable, goldRegionPrice, time
   }, [goldRegionPrice]);
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 sm:p-6">
+    <div className="flex flex-col items-center justify-center">
       <div className="w-full bg-white rounded-2xl  overflow-hidden">
         {/* Header */}
         <div className="px-4 sm:px-6 py-4 sm:py-5 bg-gray-50 border-b border-gray-200">

@@ -29,7 +29,7 @@ export default function GoldDomestic() {
   }, []);
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="">
 
       {/* Common price gold SJC*/}
       <div className={'flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-6'}>
@@ -121,7 +121,7 @@ export default function GoldDomestic() {
         <div className={'text-xl sm:text-2xl font-bold mb-6 sm:mb-12'}>
           *Biểu đồ giá vàng SJC
         </div>
-        <div className="bg-white rounded-2xl p-4 sm:p-6">
+        <div className="bg-white rounded-2xl">
           <SjcChart/>
         </div>
       </div>

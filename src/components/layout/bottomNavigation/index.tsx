@@ -15,13 +15,13 @@ const navigation = [
     id: 2, 
     name: PAGE_GOLD_DOMESTIC, 
     href: REF_GOLD_DOMESTIC, 
-    icon: Globe 
+    icon: TrendingUp
   },
   { 
     id: 3, 
     name: PAGE_GOLD_WORLD, 
     href: REF_GOLD_WORLD, 
-    icon: TrendingUp 
+    icon: Globe
   },
 ];
 
@@ -30,7 +30,7 @@ export default function BottomNavigation() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 md:hidden">
-      <div className="flex items-center justify-around py-2">
+      <div className="flex items-center justify-around py-1">
         {navigation.map((item) => {
           const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
           const Icon = item.icon;
@@ -39,15 +39,15 @@ export default function BottomNavigation() {
             <Link
               key={item.id}
               href={item.href}
-              className={`flex flex-col items-center justify-center py-2 px-3 rounded-lg transition-colors duration-200 ${
+              className={`flex flex-col items-center justify-center py-1 px-3 rounded-lg transition-colors duration-200 ${
                 isActive 
                   ? 'text-amber-600 bg-amber-50' 
                   : 'text-gray-600 hover:text-amber-600'
               }`}
             >
               <Icon 
-                size={20} 
-                className={`mb-1 ${isActive ? 'text-amber-600' : 'text-gray-500'}`}
+                size={16}
+                className={`mb-0.5 ${isActive ? 'text-amber-600' : 'text-gray-500'}`}
               />
               <span className={`text-xs font-medium ${isActive ? 'text-amber-600' : 'text-gray-500'}`}>
                 {item.name}

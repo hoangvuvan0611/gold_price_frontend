@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen mt-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen mt-16 ">
       {/* Common price gold SJC*/}
       <div className={'flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-6'}>
         <div className={'text-xl sm:text-2xl font-bold'}>
@@ -118,7 +118,7 @@ export default function Home() {
         <div className={'text-xl sm:text-2xl font-bold mb-4'}>
           *Biểu đồ xu hướng giá vàng thế giới
         </div>
-        <div className="bg-white rounded-2xl p-4 sm:p-6">
+        <div className="bg-white rounded-2xl">
           <TradingViewWidget symbol={"OANDA:XAUUSD|1D"}/>
         </div>
       </div>

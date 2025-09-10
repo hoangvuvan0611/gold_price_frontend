@@ -68,7 +68,7 @@ export default function GoldWorld() {
   };
 
   return (
-    <div className="min-h-screen mt-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div className="min-h-screen mt-16 max-w-6xl mx-auto">
       {/* Header Section */}
       <div className="mb-6 sm:mb-8 text-center">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent">
@@ -90,7 +90,7 @@ export default function GoldWorld() {
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Price Info Card */}
-            <div className="lg:col-span-1 bg-white rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100">
+            <div className="lg:col-span-1 bg-white rounded-2xl p-4 sm:p-6 border border-gray-100">
               <div className="text-center mb-4 sm:mb-6">
                 <div className="flex justify-center items-baseline">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800">{priceCommonInfo.currentPrice}</span>
@@ -108,13 +108,13 @@ export default function GoldWorld() {
               </div>
 
               <div className="space-y-3 sm:space-y-4">
-                <div className="flex justify-between items-center p-3 sm:p-4 bg-blue-50 rounded-xl">
-                  <div className="text-gray-700 font-medium text-sm sm:text-base">1 Ounce</div>
+                <div className="justify-between items-center p-3 sm:p-4 bg-blue-50 rounded-xl">
+                  <div className="text-gray-700 font-medium text-sm sm:text-base mb-1">1 Ounce:</div>
                   <div className="text-sm sm:text-base font-semibold text-blue-700">{formatVND(priceCommonInfo.priceInVND)}</div>
                 </div>
 
                 <div className="flex justify-between items-center p-3 sm:p-4 bg-amber-50 rounded-xl">
-                  <div className="text-gray-700 font-medium text-sm sm:text-base">1 Lượng</div>
+                  <div className="text-gray-700 font-medium text-sm sm:text-base">1 Lượng:</div>
                   <div className="text-sm sm:text-base font-semibold text-amber-700">{formatVND(priceCommonInfo.pricePerTael)}</div>
                 </div>
               </div>
@@ -131,13 +131,13 @@ export default function GoldWorld() {
             {/* Charts Section */}
             <div className="lg:col-span-2 space-y-4 sm:space-y-6">
               {/* Gold Price Chart */}
-              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100">
+              <div className="bg-white rounded-2xl p-4 sm:p-6 border border-gray-100">
                 <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">Biểu đồ xu hướng giá vàng thế giới</h2>
                 <TradingViewAdvanceWidget/>
               </div>
 
               {/* Forex Chart */}
-              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100">
+              <div className="bg-white rounded-2xl p-4 sm:p-6 border border-gray-100">
                 <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">Biểu đồ FOREX xu hướng tỷ giá VNĐ/USD</h2>
                 <TradingViewWidget symbol={"FX_IDC:USDVND|1D"}/>
               </div>
@@ -145,7 +145,7 @@ export default function GoldWorld() {
           </div>
 
           {/* Additional Info */}
-          <div className="mt-6 sm:mt-8 bg-white rounded-2xl shadow-lg p-4 sm:p-6 border border-gray-100">
+          <div className="mt-6 sm:mt-8 bg-white rounded-2xl p-4 sm:p-6 border border-gray-100">
             <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">Thông tin bổ sung</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-gray-600">
               <div>
