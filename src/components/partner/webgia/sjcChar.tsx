@@ -3,9 +3,10 @@
 
 import Highcharts, {SeriesOptionsType, YAxisOptions} from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import {useEffect, useRef, useState} from "react";
-import {ApiResponseData, sjcApi} from "@/services/sjcApi";
-import {ChartOptions, SjcChartData} from "@/models/sjcChartData";
+import {useEffect, useState} from "react";
+import {sjcApi} from "@/services/sjcApi";
+import {SjcChartData} from "@/models/sjcChartData";
+import {ApiResponseData} from "@/models/response";
 
 Highcharts.setOptions({
   lang: {
