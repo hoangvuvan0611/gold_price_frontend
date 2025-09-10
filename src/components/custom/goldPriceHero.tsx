@@ -52,7 +52,7 @@ export default function GoldPriceHero({ title, timeUpdateStr, goldPrices, urlGol
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                     </span>
                     <p>Bán ra:
-                      <span className={'font-bold'}> {item.buyPrice + ".000"}</span>
+                      <span className={'font-bold'}> {item.sellPrice + ".000"}</span>
                       <span className={'text-sm'}> VNĐ/Lượng</span>
                     </p>
                   </div>
@@ -87,7 +87,7 @@ export default function GoldPriceHero({ title, timeUpdateStr, goldPrices, urlGol
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                     </span>
                     <p>Bán ra:
-                      <span className={'font-bold'}> {item.buyPrice + ".000"}</span>
+                      <span className={'font-bold'}> {item.sellPrice + ".000"}</span>
                       <span className={'text-sm'}> VNĐ/Lượng</span>
                     </p>
                   </div>
