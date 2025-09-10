@@ -1,3 +1,7 @@
+port dev: 3000
+port prod: 4001
+
+
 const options: Highcharts.Options = {
   rangeSelector: { selected: 4 },
   xAxis: {
