@@ -90,10 +90,10 @@ export default function GoldRegionPriceTable({ titleTable, goldRegionPrice, time
                   {item.title}
                 </td>
                 <td className="px-2 sm:px-4 py-2 sm:py-3 text-red-500 font-medium text-right text-xs sm:text-sm whitespace-nowrap">
-                  {formatPrice(item.buy, isMobile)}
+                  {item.buy + ".000"}
                 </td>
                 <td className="px-2 sm:px-4 py-2 sm:py-3 text-green-600 font-medium text-right text-xs sm:text-sm whitespace-nowrap">
-                  {formatPrice(item.sell, isMobile)}
+                  {item.sell + ".000"}
                 </td>
               </tr>
             ))}
