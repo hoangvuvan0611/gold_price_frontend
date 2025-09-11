@@ -28,7 +28,7 @@ export default function PNJPage() {
   }, []);
 
   return (
-    <div className="min-h-screen mt-16">
+    <div className="min-h-screen mt-5 sm:mt-16">
 
       <GoldPriceHero
         goldPrices={goldPrices}

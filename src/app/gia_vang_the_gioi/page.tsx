@@ -68,7 +68,7 @@ export default function GoldWorld() {
   };
 
   return (
-    <div className="min-h-screen mt-16 max-w-6xl mx-auto">
+    <div className="min-h-screen mt-5 sm:mt-16 max-w-6xl mx-auto">
       {/* Header Section */}
       <div className="mb-6 sm:mb-8 text-center">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent">

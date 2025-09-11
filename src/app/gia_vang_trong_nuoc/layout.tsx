@@ -26,7 +26,7 @@ export default function GiaVangTrongNuocLayout({ children }: { children: ReactNo
   const pathname = usePathname();
 
     return (
-      <div className="min-h-screen mt-16">
+      <div className="min-h-screen mt-5 sm:mt-16">
         {/* Danh sach cac tab thuong hieu vang trong nuoc */}
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12 lg:mb-16">
           {/* Danh sách tab */}
