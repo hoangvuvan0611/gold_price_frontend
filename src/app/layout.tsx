@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import {Toaster} from "sonner";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,19 +33,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Google AdSense script */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7157280156441150"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <Toaster position="top-right"/>
-      <div className={'mx-auto max-w-[1280px] px-2 sm:px-4 pb-20 md:pb-0'}>
-          <div className={'sticky top-0 z-50'}>
-              <Header/>
-          </div>
-          {children}
-          <div>
-              <Footer/>
-          </div>
-      </div>
+        <Toaster position="top-right"/>
+        <div className={'mx-auto max-w-[1280px] px-2 sm:px-4 pb-20 md:pb-0'}>
+            <div className={'sticky top-0 z-50'}>
+                <Header/>
+            </div>
+            {children}
+            <div>
+                <Footer/>
+            </div>
+        </div>
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {sjcApi} from "@/services/sjcApi";
 import {toast} from "sonner";
 import {ApiResponseData} from "@/models/response";
+import AdBanner from "@/components/ads/banner";
 
 export default function GoldDomestic() {
 
