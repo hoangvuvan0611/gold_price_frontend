@@ -119,7 +119,7 @@ export default function Home() {
           *Biểu đồ xu hướng giá vàng thế giới
         </div>
         <div className="bg-white rounded-2xl">
-          <TradingViewWidget symbol={"OANDA:XAUUSD|1D"}/>
+          <TradingViewWidget symbol={"OANDA:XAUUSD|3M"}/>
         </div>
       </div>
 
@@ -130,7 +130,7 @@ export default function Home() {
           *Biểu đồ FOREX xu hướng tỷ giá VNĐ/USD
         </div>
         <div className="bg-white rounded-2xl p-4 sm:p-6">
-          <TradingViewWidget symbol={"FX_IDC:USDVND|1D"}/>
+          <TradingViewWidget symbol={"FX_IDC:USDVND|1Y"}/>
         </div>
       </div>
 

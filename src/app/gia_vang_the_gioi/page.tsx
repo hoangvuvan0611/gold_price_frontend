@@ -139,7 +139,7 @@ export default function GoldWorld() {
               {/* Forex Chart */}
               <div className="bg-white rounded-2xl p-4 sm:p-6 border border-gray-100">
                 <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">Biểu đồ FOREX xu hướng tỷ giá VNĐ/USD</h2>
-                <TradingViewWidget symbol={"FX_IDC:USDVND|1D"}/>
+                <TradingViewWidget symbol={"FX_IDC:USDVND|1Y"}/>
               </div>
             </div>
           </div>

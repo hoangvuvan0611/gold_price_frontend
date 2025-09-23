@@ -22,7 +22,7 @@ function TradingViewWidget({symbol}: TradingViewWidgetProps) {
     script.async = true;
     script.innerHTML = `
       {
-        "lineWidth": 2,
+        "lineWidth": 1,
         "lineType": 0,
         "chartType": "area",
         "fontColor": "rgb(106, 109, 120)",
