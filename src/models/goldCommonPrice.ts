@@ -9,6 +9,9 @@ export interface GoldPrice {
   unit: string;
   buyPrice: string;
   sellPrice: string;
+  sellDescription: string;
+  buyDescription: string;
+  updateTime: string;
 }
 
 export interface GoldRegionPrice {

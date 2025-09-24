@@ -13,11 +13,12 @@ export default function Home() {
   const [timeUpdateStr, setTimeUpdateStr] = useState<string>("");
 
   useEffect(() => {
-    sjcApi.getCommonData().then((response: ApiResponseData<GoldCommonPrice>) => {
+    sjcApi.getInfoGoldHomePrice().then((response: ApiResponseData<GoldCommonPrice>) => {
       if (response.success) {
         const data = response.data;
-        console.log(data);
-        setGoldPrices(data.goldPrices);
+
+
+        setGoldPrices(data.goldPrices.filter((_, index) => index === 0 || index === 3));
         setTimeUpdateStr(data.timeUpdateStr);
       } else {
         toast("Lỗi tải dữ liệu");
@@ -33,13 +34,13 @@ export default function Home() {
           *Giá vàng SJC hôm nay
         </div>
         <div className={'font-normal text-xs sm:text-sm text-lime-600 p-2 bg-gray-200 rounded-lg'}>
-          {timeUpdateStr}
+          {timeUpdateStr ? new Date(timeUpdateStr).toLocaleString() : new Date().toLocaleString()}
         </div>
       </div>
 
       <div className={'grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-10'}>
         {goldPrices?.map((item) => {
-          return item.title === "Giá vàng Miếng"
+          return item.title === "Vàng miếng SJC"
             ? <div key={item.title} className="flex gap-4 bg-white rounded-2xl">
               <Image
                 src="/gold_fine_sjc.png"
@@ -49,28 +50,45 @@ export default function Home() {
                 priority
                 className="bg-gray-100 rounded-2xl p-2 mx-auto sm:mx-0"
               />
-              <div className="flex flex-col justify-between flex-1 py-2">
+              <div className="flex flex-col justify-between flex-1">
                 <h1 className="text-xl sm:text-2xl font-bold text-left">{item.title}</h1>
-                <div className="text-base sm:text-lg space-y-2">
-                  <div className="flex items-center space-x-2 cursor-pointer">
+                <div className="text-base sm:text-lg space-y-0.5 mt-2">
+                  {/*Buy*/}
+                  <div>
+                    <div className="flex items-center space-x-2 cursor-pointer">
                     <span className="relative flex h-3 w-3">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                     </span>
-                    <p className="text-sm sm:text-base">Mua vào:
-                      <span className={'font-bold'}> {item.buyPrice + ".000"}</span>
-                      <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
-                    </p>
+                      <p className="text-sm sm:text-base">Mua vào:
+                        <span className={'font-bold'}> {item.buyPrice}</span>
+                        <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
+                      </p>
+                    </div>
+                    <div className="flex items-center space-x-2 cursor-pointer">
+                      <span className={`text-xs sm:text-sm ${item.buyDescription.includes('+') || item.buyDescription === "" ? 'text-green-600' : 'text-red-600'}`}>
+                        {item.buyDescription === "" ? "+0" : item.buyDescription}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-2 cursor-pointer">
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                    </span>
-                    <p className="text-sm sm:text-base">Bán ra:
-                      <span className={'font-bold'}> {item.sellPrice + ".000"}</span>
-                      <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
-                    </p>
+
+                  {/*Sell */}
+                  <div>
+                    <div className="flex items-center space-x-2 cursor-pointer">
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                      </span>
+                      <p className="text-sm sm:text-base">Bán ra:
+                        <span className={'font-bold'}> {item.sellPrice}</span>
+                        <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
+                      </p>
+                    </div>
+                    <div className={'flex items-center space-x-2 cursor-pointer'}>
+                      <span className={`text-xs sm:text-sm ${item.sellDescription.includes('+') || item.sellDescription === "" ? 'text-green-600' : 'text-red-600'}`}>
+                        {item.sellDescription === "" ? "+0" : item.sellDescription}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -84,28 +102,45 @@ export default function Home() {
                 priority
                 className="bg-gray-100 rounded-2xl p-2 mx-auto sm:mx-0"
               />
-              <div className="flex flex-col justify-between flex-1 py-2">
+              <div className="flex flex-col justify-between flex-1">
                 <h1 className="text-xl sm:text-2xl font-bold text-left">{item.title}</h1>
-                <div className="text-base sm:text-lg space-y-2">
-                  <div className="flex items-center space-x-2 cursor-pointer">
+                <div className="text-base sm:text-lg space-y-0.5 mt-2">
+                  {/*Buy*/}
+                  <div>
+                    <div className="flex items-center space-x-2 cursor-pointer">
                     <span className="relative flex h-3 w-3">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                     </span>
-                    <p className="text-sm sm:text-base">Mua vào:
-                      <span className={'font-bold'}> {item.buyPrice + ".000"}</span>
-                      <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
-                    </p>
+                      <p className="text-sm sm:text-base">Mua vào:
+                        <span className={'font-bold'}> {item.buyPrice}</span>
+                        <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
+                      </p>
+                    </div>
+                    <div className="flex items-center space-x-2 cursor-pointer">
+                      <span className={`text-xs sm:text-sm ${item.buyDescription.includes('+') || item.buyDescription === "" ? 'text-green-600' : 'text-red-600'}`}>
+                        {item.buyDescription === "" ? "+0 (Không thay đổi)" : item.buyDescription}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-2 cursor-pointer">
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                    </span>
-                    <p className="text-sm sm:text-base">Bán ra:
-                      <span className={'font-bold'}> {item.sellPrice + ".000"}</span>
-                      <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
-                    </p>
+
+                  {/*Sell */}
+                  <div>
+                    <div className="flex items-center space-x-2 cursor-pointer">
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                      </span>
+                      <p className="text-sm sm:text-base">Bán ra:
+                        <span className={'font-bold'}> {item.sellPrice}</span>
+                        <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
+                      </p>
+                    </div>
+                    <div className={'flex items-center space-x-2 cursor-pointer'}>
+                      <span className={`text-xs sm:text-sm ${item.sellDescription.includes('+') || item.sellDescription === "" ? 'text-green-600' : 'text-red-600'}`}>
+                        {item.sellDescription === "" ? "+0 (Không thay đổi)" : item.sellDescription}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
