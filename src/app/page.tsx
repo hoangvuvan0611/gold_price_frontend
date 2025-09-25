@@ -17,7 +17,6 @@ export default function Home() {
       if (response.success) {
         const data = response.data;
 
-
         setGoldPrices(data.goldPrices.filter((_, index) => index === 0 || index === 3));
         setTimeUpdateStr(data.timeUpdateStr);
       } else {
@@ -34,7 +33,7 @@ export default function Home() {
           *Giá vàng SJC hôm nay
         </div>
         <div className={'font-normal text-xs sm:text-sm text-lime-600 p-2 bg-gray-200 rounded-lg'}>
-          {timeUpdateStr ? new Date(timeUpdateStr).toLocaleString() : new Date().toLocaleString()}
+          Cập nhật lần cuối: {goldPrices[0] ? goldPrices[0]?.updateTime : new Date().toLocaleString()}
         </div>
       </div>
 
@@ -51,15 +50,20 @@ export default function Home() {
                 className="bg-gray-100 rounded-2xl p-2 mx-auto sm:mx-0"
               />
               <div className="flex flex-col justify-between flex-1">
-                <h1 className="text-xl sm:text-2xl font-bold text-left">{item.title}</h1>
+                <h1 className="text-xl sm:text-2xl font-bold text-left">
+                  {item.title}
+                  <span className={`ml-2 ${item.buyDescription.includes('+') || item.buyDescription === "" ? 'text-green-800' : 'text-red-800'}`}>
+                      {item.buyDescription.includes('+') || item.buyDescription === "" ? '↗' : '↘'}
+                  </span>
+                </h1>
                 <div className="text-base sm:text-lg space-y-0.5 mt-2">
                   {/*Buy*/}
                   <div>
                     <div className="flex items-center space-x-2 cursor-pointer">
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                    </span>
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                      </span>
                       <p className="text-sm sm:text-base">Mua vào:
                         <span className={'font-bold'}> {item.buyPrice}</span>
                         <span className={'text-xs sm:text-sm'}> VNĐ/Lượng</span>
@@ -103,7 +107,12 @@ export default function Home() {
                 className="bg-gray-100 rounded-2xl p-2 mx-auto sm:mx-0"
               />
               <div className="flex flex-col justify-between flex-1">
-                <h1 className="text-xl sm:text-2xl font-bold text-left">{item.title}</h1>
+                <h1 className="text-xl sm:text-2xl font-bold text-left">
+                  {item.title}
+                  <span className={`ml-2 ${item.buyDescription.includes('+') || item.buyDescription === "" ? 'text-green-800' : 'text-red-800'}`}>
+                    {item.buyDescription.includes('+') || item.buyDescription === "" ? '↗' : '↘'}
+                  </span>
+                </h1>
                 <div className="text-base sm:text-lg space-y-0.5 mt-2">
                   {/*Buy*/}
                   <div>
