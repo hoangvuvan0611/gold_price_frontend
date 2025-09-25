@@ -71,7 +71,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center space-x-2 cursor-pointer">
                       <span className={`text-xs sm:text-sm ${item.buyDescription.includes('+') || item.buyDescription === "" ? 'text-green-600' : 'text-red-600'}`}>
-                        {item.buyDescription === "" ? "+0" : item.buyDescription}
+                        {item.buyDescription === "" ? "+0 (Không thay đổi)" : item.buyDescription}
                       </span>
                     </div>
                   </div>
@@ -90,7 +90,7 @@ export default function Home() {
                     </div>
                     <div className={'flex items-center space-x-2 cursor-pointer'}>
                       <span className={`text-xs sm:text-sm ${item.sellDescription.includes('+') || item.sellDescription === "" ? 'text-green-600' : 'text-red-600'}`}>
-                        {item.sellDescription === "" ? "+0" : item.sellDescription}
+                        {item.sellDescription === "" ? "+0 (Không thay đổi)" : item.sellDescription}
                       </span>
                     </div>
                   </div>
