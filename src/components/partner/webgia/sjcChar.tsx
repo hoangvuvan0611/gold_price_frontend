@@ -5,7 +5,7 @@ import Highcharts, {SeriesOptionsType, YAxisOptions} from "highcharts/highstock"
 import HighchartsReact from "highcharts-react-official";
 import {useEffect, useState} from "react";
 import {sjcApi} from "@/services/sjcApi";
-import {SjcChartData} from "@/models/sjcChartData";
+import {GoldSeries, SjcChartData} from "@/models/sjcChartData";
 import {ApiResponseData} from "@/models/response";
 
 // Thiết lập ngôn ngữ tiếng Việt toàn diện
@@ -80,6 +80,19 @@ Highcharts.setOptions({
   }
 });
 
+const CUSTOM_COLORS = [
+  // '#FF6B6B', // Đỏ cam
+  // '#4ECDC4', // Xanh ngọc
+  // '#45B7D1', // Xanh dương
+  // '#FFA07A', // Cam nhạt
+  // '#98D8C8', // Xanh lá nhạt
+  // '#F7DC6F', // Vàng
+  // '#BB8FCE', // Tím
+  // '#85C1E9', // Xanh dương nhạt
+  // '#F8C471', // Cam
+  // '#82E0AA', // Xanh lá
+];
+
 export default function SjcChart() {
   const [isMobile, setIsMobile] = useState(false);
   const [options, setOptions] = useState<Highcharts.Options>({
@@ -106,18 +119,42 @@ export default function SjcChart() {
         const series = response.data.seriesOptions;
         const optionsValue = response.data.chartOptions;
 
-        // Điều chỉnh định dạng label dựa trên kích thước màn hình
-        optionsValue.yAxis.labels.formatter = eval("(" + "function () {\n" +
-          "          return this.value + '" + (isMobile ? "tr" : " triệu") + "';\n" +
-          "        }" + ")");
+        // CẤU HÌNH MÀU SẮC VÀ KÍCH THƯỚC ĐƯỜNG LINE
+        const customizedSeries = series.map((serie: GoldSeries, index: number) => ({
+          ...serie,
+          // Chọn màu từ mảng custom colors, nếu hết màu thì dùng màu mặc định
+          // color: CUSTOM_COLORS[index] || serie.color,
 
-        // Cấu hình cho trục Y
-        optionsValue.yAxis.tickAmount = 5;
-        optionsValue.yAxis.tickInterval = 5;
-        optionsValue.yAxis.opposite = true;
-        optionsValue.yAxis.reserveSpace = true;
-        optionsValue.yAxis.labels.align = 'right';
-        optionsValue.yAxis.labels.x = isMobile ? 35 : 60;
+          // Điều chỉnh độ dày đường line
+          lineWidth: isMobile ? 1 : 2, // Dày hơn trên desktop
+
+          // Tuỳ chỉnh marker (điểm trên line)
+          marker: {
+            enabled: false, // Tắt marker cho tất cả điểm
+            radius: isMobile ? 0.5 : 1, // Kích thước marker
+            symbol: 'circle', // Hình dạng marker
+            lineWidth: 0.5,
+            lineColor: '#ffffff',
+            // fillColor: CUSTOM_COLORS[index] || serie.color,
+          },
+
+          // Tuỳ chỉnh trạng thái khi hover
+          states: {
+            hover: {
+              lineWidth: isMobile ? 1.5 : 2.5, // Đường line dày hơn khi hover
+              marker: {
+                enabled: true,
+                radius: isMobile ? 2.5 : 3.5, // Marker to hơn khi hover
+              }
+            }
+          },
+
+          // Tuỳ chỉnh tooltip cho từng series
+          tooltip: {
+            valueDecimals: 2,
+            valueSuffix: ' triệu',
+          }
+        }));
 
         // Xác định khoảng thời gian mặc định
         const defaultRange = isMobile ? 1 : 5;
@@ -180,29 +217,82 @@ export default function SjcChart() {
           chart: {
             height: 600,
             spacingRight: isMobile ? 35 : 60,
+            events: {
+              load: function () {
+                const series = this.series[0];
+                const lastPoint = series.data[series.data.length - 1];
+
+                // Bật marker cho point cuối
+                lastPoint.update({
+                  marker: {
+                    enabled: true,
+                    radius: 6,
+                    fillColor: 'red',
+                    lineWidth: 2,
+                    lineColor: '#fff'
+                  }
+                });
+              }
+            }
           },
           rangeSelector: rangeSelectorConfig,
+          navigator: {
+            xAxis: {
+              overscroll: 10 * 24 * 3600 * 1000 // Đồng bộ với main chart
+            }
+          },
           xAxis: {
             ...optionsValue.xAxis,
+            overscroll: 10 * 24 * 3600 * 1000, // 10 ngày khoảng trống
+            minRange: 7 * 24 * 3600 * 1000, // Tối thiểu 7 ngày
             dateTimeLabelFormats: {
-              day: '%d/%m/%Y',
+              day: '%d/%m',
               week: '%d/%m/%Y',
               month: '%m/%Y',
               year: '%Y'
             },
+            tickAmount: 1,
+            tickInterval: 5,
             labels: {
               style: {
                 fontSize: isMobile ? '9px' : '11px'
               },
             }
           },
-          yAxis: optionsValue.yAxis as YAxisOptions,
-          plotOptions: optionsValue.plotOptions,
+          yAxis: {
+            ...optionsValue.yAxis as YAxisOptions,
+            tickAmount: 5,
+            tickInterval: 5,
+            opposite: true,
+            minPadding: 0,
+            labels: {
+              align: "right",
+              x: isMobile ? 35 : 60,
+              formatter: eval("(" + "function () {\n" +
+                "          return this.value + '" + (isMobile ? "tr" : " triệu") + "';\n" +
+                "        }" + ")")
+            }
+          },
+          legend: {
+            enabled: false,
+            verticalAlign: 'top',
+            layout: 'vertical',
+          },
+          plotOptions: {
+            ...optionsValue.plotOptions,
+            series: {
+              ...optionsValue.plotOptions?.series,
+              marker: {
+                enabled: true,
+                enabledThreshold: 1, // Chỉ hiển thị marker cho điểm cuối
+              }
+            }
+          },
           title: optionsValue.title,
           subtitle: optionsValue.subtitle,
           tooltip: tooltipConfig,
           colors: optionsValue.colors,
-          series: series as SeriesOptionsType[],
+          series: customizedSeries as unknown as SeriesOptionsType[],
         });
       }
     });
